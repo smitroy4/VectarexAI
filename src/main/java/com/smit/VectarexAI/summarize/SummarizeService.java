@@ -1,9 +1,11 @@
-package com.smit.VectarexAI;
+package com.smit.VectarexAI.summarize;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class SummarizeService {
 
     private final ChatClient chatClient;
@@ -13,6 +15,7 @@ public class SummarizeService {
     }
 
     public String summarize(String ticket) {
+        log.info("Called - openai/gpt-oss-20b API");
         return chatClient.prompt()
                 .user("Summarize this support ticket in 2 lines : \n\n" + ticket)
                 .call()
