@@ -7,6 +7,7 @@ import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,22 +40,24 @@ public class ChatService {
             order tracking status query or company policy query.
             """;
 
-    public String chat(String message) {
+    public Flux<String> chat(String message) {
 
         // USER role
         history.add(new UserMessage(message));
 
+        StringBuilder fullResponse = new StringBuilder();
+
         // SYSTEM + Conversation History
-        String response = chatClient.prompt()
+        return chatClient
+                .prompt()
                 .system(SYSTEM_PROMPT)
                 .messages(history)
-                .call()
-                .content();
-
-        // ASSISTANT role
-        history.add(new AssistantMessage(response));
-
-        return response;
+                .stream()
+                .content()
+                .doOnNext(fullResponse::append)
+                .doOnComplete(() -> {
+                    history.add(new AssistantMessage(fullResponse.toString()));
+                });
     }
 
     public void clearHistory() {

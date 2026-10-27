@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CheesyLane Support</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <a class="backlink" href="/">← Home</a>
+
+  <div class="chat">
+    <header class="chat__header">
+      <div class="chat__avatar">🍕</div>
+      <div class="chat__title">
+        <h1>CheesyLane Support</h1>
+        <span class="chat__status">We're here to help</span>
+      </div>
+      <button id="clearBtn" class="chat__clear" title="Clear conversation">Clear</button>
+    </header>
+
+    <main id="messages" class="chat__messages" aria-live="polite"></main>
+
+    <footer class="chat__footer">
+      <form id="chatForm" class="chat__form">
+        <textarea
+          id="input"
+          class="chat__input"
+          placeholder="Type your message… (Enter to send, Shift+Enter for new line)"
+          rows="1"
+          required></textarea>
+        <button id="sendBtn" type="submit" class="chat__send">Send</button>
+      </form>
+    </footer>
+  </div>
+
+  <script src="/js/chat.js"></script>
+</body>
+</html>

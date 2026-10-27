@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ticket Summarizer</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <a class="backlink" href="/">← Home</a>
+
+  <div class="chat">
+    <header class="chat__header">
+      <div class="chat__avatar">📝</div>
+      <div class="chat__title">
+        <h1>Ticket Summarizer</h1>
+        <span class="chat__status">Paste a ticket, get a 2-line summary</span>
+      </div>
+    </header>
+
+    <main class="summarize__body">
+      <label class="summarize__label" for="ticket">Support ticket</label>
+      <textarea
+        id="ticket"
+        class="summarize__input"
+        placeholder="Paste the full support ticket text here…"
+        required></textarea>
+
+      <label class="summarize__label">Summary</label>
+      <div id="result" class="summarize__result summarize__result--placeholder">
+        Your summary will appear here.
+      </div>
+    </main>
+
+    <footer class="chat__footer">
+      <form id="summarizeForm" class="chat__form">
+        <button id="summarizeBtn" type="submit" class="chat__send">Summarize</button>
+      </form>
+    </footer>
+  </div>
+
+  <script src="/js/summarize.js"></script>
+</body>
+</html>
