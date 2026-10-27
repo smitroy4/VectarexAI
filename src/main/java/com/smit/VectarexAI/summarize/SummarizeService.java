@@ -15,9 +15,9 @@ public class SummarizeService {
     }
 
     public String summarize(String ticket) {
-        log.info("Called - openai/gpt-oss-20b API");
+        log.info("Called - openai/gpt-oss-120b API");
         return chatClient.prompt()
-                .user("Summarize this support ticket in 2 lines : \n\n" + ticket)
+                .user("Summarize in 2 lines : \n\n" + ticket)
                 .call()
                 .content();
     }
